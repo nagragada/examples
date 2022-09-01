@@ -15,7 +15,7 @@
 import argparse
 import sys
 import time
-
+from picamera import PiCamera
 import cv2
 from tflite_support.task import core
 from tflite_support.task import processor
@@ -41,7 +41,7 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
   start_time = time.time()
 
   # Start capturing video input from the camera
-  cap = cv2.VideoCapture(camera_id)
+  cap = cv2.VideoCapture(PiCamera())
   cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
   cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
